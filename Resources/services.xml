@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <!-- configuration -->
+        <service id="ost_qr_code_reader.configuration" class="OstFoundation\Services\ConfigurationService">
+            <factory service="ost_foundation.services.configuration_service" method="getConfig"/>
+            <argument type="string">OstQrCodeReader</argument>
+        </service>
+
+        <service id="ost_qr_code_reader.listeners.controllers.frontend" class="OstQrCodeReader\Listeners\Controllers\Frontend">
+            <argument type="string">%ost_qr_code_reader.view_dir%</argument>
+            <argument type="service" id="ost_qr_code_reader.configuration" />
+            <tag name="shopware.event_listener" method="onPreDispatch" event="Enlight_Controller_Action_PreDispatch_Frontend" />
+        </service>
+
+    </services>
+</container>
