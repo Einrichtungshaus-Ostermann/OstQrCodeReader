@@ -3,10 +3,11 @@
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - QrCodeReader
  *
- * 
- *
  * 1.0.0
  * - initial release
+ *
+ * 1.0.1
+ * - fixed code styling
  *
  * @package   OstQrCodeReader
  *

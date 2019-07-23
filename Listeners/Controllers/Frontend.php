@@ -10,7 +10,6 @@
  * @license   proprietary
  */
 
-
 namespace OstQrCodeReader\Listeners\Controllers;
 
 use Enlight_Controller_Action as Controller;
@@ -57,7 +56,8 @@ class Frontend
         $request = $controller->Request();
         $view = $controller->View();
 
-        $view->assign('OstQrCodeReaderPrompt', $this->configuration['prompt'] ?? '');
+        // assign the prompt
+        $view->assign('ostQrCodeReaderPrompt', (string) $this->configuration['prompt']);
 
         // add template dir
         $view->addTemplateDir($this->viewDir);

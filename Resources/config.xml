@@ -7,9 +7,11 @@
             <name>defaultButton</name>
             <label><![CDATA[<b>Allgemeine Einstellungen</b>]]></label>
         </element>
+
         <element type="text">
             <name>prompt</name>
-            <label>Qr Code Reader Prompt</label>
+            <label>Hinweis</label>
+            <description>Ein optionaler Hinweis, der zum Scan des QR Codes auffordert.</description>
         </element>
 
     </elements>

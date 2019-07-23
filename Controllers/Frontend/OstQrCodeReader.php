@@ -2,6 +2,7 @@
 
 /**
  * Einrichtungshaus Ostermann GmbH & Co. KG - QrCodeReader
+ *
  * @package   OstQrCodeReader
  *
  * @author    Tim Windelschmidt <tim.windelschmidt@ostermann.de>
@@ -22,11 +23,7 @@ class Shopware_Controllers_Frontend_OstQrCodeReader extends Enlight_Controller_A
     {
         // ...
         $viewDir = $this->container->getParameter('ost_qr_code_reader.view_dir');
-
-        // ...
         $this->get('template')->addTemplateDir($viewDir);
-
-        // ...
         parent::preDispatch();
     }
 
@@ -58,6 +55,9 @@ class Shopware_Controllers_Frontend_OstQrCodeReader extends Enlight_Controller_A
     {
     }
 
+    /**
+     * ...
+     */
     public function openAction()
     {
         $q = $this->Request()->getParam('q');
