@@ -9,6 +9,9 @@
  * 1.0.1
  * - fixed code styling
  *
+ * 1.1.0
+ * - add kojen support
+ *
  * @package   OstQrCodeReader
  *
  * @author    Tim Windelschmidt <tim.windelschmidt@ostermann.de>

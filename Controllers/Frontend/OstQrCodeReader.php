@@ -64,14 +64,28 @@ class Shopware_Controllers_Frontend_OstQrCodeReader extends Enlight_Controller_A
 
         if (strpos($q, 'http') === 0) {
             $path = parse_url($q)['path'];
-            $number = array_reverse(explode('/', $path))[0];
-            $q = $number;
+            $pathParts = explode('/', $path);
+
+            if (count($pathParts) !== 3) {
+                goto search;
+            }
+
+            //Remove the empty string in the beginning
+            [, $type, $number] = $pathParts;
+
+            switch ($type) {
+                case 'artikel':
+                    $q = $number;
+                    break;
+                case 'koje':
+                    return $this->forward('index', 'OstExhibitAreaListing', 'Frontend', ['koje' => $number]);
+            }
         } else {
             $re = '/^\d[0]+(\d+)(\d{5})\d$/m';
 
             preg_match_all($re, $q, $matches, PREG_SET_ORDER);
             if (count($matches) > 0) {
-                [,$number, $variantNumber] = $matches[0];
+                [, $number, $variantNumber] = $matches[0];
 
                 $variantNumber = ltrim($variantNumber, '0');
                 if (trim($variantNumber, '0') !== '') {
@@ -82,6 +96,7 @@ class Shopware_Controllers_Frontend_OstQrCodeReader extends Enlight_Controller_A
             }
         }
 
+        search:
         $this->forward('index', 'search', 'frontend', ['sSearch' => $q]);
     }
 
